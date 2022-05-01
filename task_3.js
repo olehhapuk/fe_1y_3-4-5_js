@@ -23,4 +23,27 @@
 
 // Task 4
 // random() * (max - min) + min;
-const random = Math.random() * (19 - 3) + 3;
+// const random = Math.random() * (19 - 3) + 3;
+
+// Task 5
+// const result = 5 + 5 + '5';
+// console.log(result, typeof result);
+
+// Task 6
+// const email = 'johndoe@mail.com';
+// const isValid = email.includes('@');
+// const number = email.length;
+// console.log(isValid, number);
+
+// Task 7
+// const a = 'My ';
+// const b = 'name ';
+// const c = 'is ';
+// const fullName = a + b + c + 'Viktor';
+// console.log(fullName);
+
+// Task 8
+const username = 'Олег';
+const payment = 400;
+const message = `Дякуємо, ${username}! До сплати ${payment} гривень`;
+alert(message);
