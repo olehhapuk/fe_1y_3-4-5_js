@@ -7,3 +7,4 @@
 3. [Module 01 Practice](https://github.com/olehhapuk/fe_1y_3-4-5_js/tree/01_practice)
 3. [Logic](https://github.com/olehhapuk/fe_1y_3-4-5_js/tree/logic)
 4. [01 Module Repeat](https://github.com/olehhapuk/fe_1y_3-4-5_js/tree/01-module-repeat)
+5. [Arrays](https://github.com/olehhapuk/fe_1y_3-4-5_js/tree/arrays)
