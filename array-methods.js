@@ -61,6 +61,27 @@
 
 // console.log(redFruits);
 
+// const people = [
+//   'artem',
+//   'vlad',
+//   'kateryna',
+//   'maxim',
+//   'ivan',
+//   'danylo1',
+//   'danylo2',
+//   'polina',
+//   'rostyslav',
+// ];
+// const arrA = people.slice(0, 3);
+// const arrB = people.slice(5, 9);
+// // console.log(arrB);
+// arrA.push(...arrB); // spread
+// console.log(arrA);
+
+// console.log(people, people.slice());
+// console.log(people.slice() === people);
+// console.log(people.slice(-3));
+
 const people = [
   'artem',
   'vlad',
@@ -72,12 +93,18 @@ const people = [
   'polina',
   'rostyslav',
 ];
+
+// const resultA = people.splice(2);
+// console.log(resultA, people);
+
+// const resultB = people.splice(1, 3);
+// console.log(resultB, people);
+
+// const resultC = people.splice(3, 1, 'super_maxim');
+// console.log(resultC, people);
+
+// console.log(people.splice(1, 0, 'taras', 'ostap'), people);
+
 // const arrA = people.slice(0, 3);
 // const arrB = people.slice(5, 9);
-// // console.log(arrB);
-// arrA.push(...arrB); // spread
-// console.log(arrA);
-
-console.log(people, people.slice());
-console.log(people.slice() === people);
-console.log(people.slice(-3));
+// console.log(arrA, arrB, arrA.concat(arrB));
