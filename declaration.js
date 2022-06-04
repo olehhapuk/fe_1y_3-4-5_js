@@ -71,22 +71,42 @@
  *   - В іншому випадку: Вертаємо повідомлення "Ви не адмін"
  */
 
-const ADMIN_USERNAME = 'ADMIN';
-const ADMIN_PASS = '1234';
+// const ADMIN_USERNAME = 'ADMIN';
+// const ADMIN_PASS = '1234';
 
-const usernameInput = prompt('Введіть свій username');
-const passInput = prompt('Введіть свій пароль');
+// const usernameInput = prompt('Введіть свій username');
+// const passInput = prompt('Введіть свій пароль');
 
-alert(login(usernameInput, passInput));
+// alert(login(usernameInput, passInput));
 
-function login(username, pass) {
-  if (username === null || pass === null) {
-    return;
-  }
+// function login(username, pass) {
+//   if (username === null || pass === null) {
+//     return;
+//   }
 
-  if (username === ADMIN_USERNAME && pass === ADMIN_PASS) {
-    return 'Вітаємо адмін';
-  } else {
-    return 'Ви не адмін';
-  }
-}
+//   if (username === ADMIN_USERNAME && pass === ADMIN_PASS) {
+//     return 'Вітаємо адмін';
+//   } else {
+//     return 'Ви не адмін';
+//   }
+// }
+
+// hello -> console.log('Hello');
+
+// Function declaration
+// hello();
+
+// function hello() {
+//   console.log('Hello');
+// }
+
+// hello();
+
+// Function expression
+// hello();
+
+// const hello = function () {
+//   console.log('Hello');
+// };
+
+// hello();
