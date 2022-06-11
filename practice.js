@@ -142,3 +142,16 @@
 
 // console.log(arr1.splice(1, 2, 'Taras', 'Danylo'));
 // console.log(arr1);
+
+function fn() {
+  const a = 1;
+  console.log(a);
+}
+
+const a = 1;
+
+fn();
+
+[1, 2, 6, 7, 5].splice(2, 2, 6, 7);
+
+function empty() {}
