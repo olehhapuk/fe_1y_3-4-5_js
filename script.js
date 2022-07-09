@@ -101,15 +101,28 @@
 // const pelmeni = makeDish('Остап', 'пельмені');
 // console.log(fish, noodles, pelmeni);
 
-function makeCheff(cookName) {
-  return (dishName) => {
-    return `${cookName} готує ${dishName}`;
-  };
-}
+// function makeCheff(cookName) {
+//   return (dishName) => {
+//     return `${cookName} готує ${dishName}`;
+//   };
+// }
 
-const cheffOstap = makeCheff('Остап');
+// const cheffOstap = makeCheff('Остап');
 
-const fish = cheffOstap('рибу');
-const noodles = cheffOstap('макарони');
-const pelmeni = cheffOstap('пельмені');
-console.log(fish, noodles, pelmeni);
+// const fish = cheffOstap('рибу');
+// const noodles = cheffOstap('макарони');
+// const pelmeni = cheffOstap('пельмені');
+// console.log(fish, noodles, pelmeni);
+
+// Створити функцію add(a, b, callback) яка додасть a + b і передасть результат у callback
+
+const add = function (a, b, callback) {
+  const result = a + b;
+  callback(result);
+};
+
+const logResult = function (result) {
+  console.log(result);
+};
+
+add(3, 5, logResult);
