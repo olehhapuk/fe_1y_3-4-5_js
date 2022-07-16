@@ -1,14 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Магазин</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <!-- <script src="closure.js"></script> -->
-    <script src="this.js"></script>
+    <div class="container">
+      <section class="section">
+        <h2 class="section__title">Продукти</h2>
+        <ul class="grid" id="productsList"></ul>
+      </section>
+
+      <section class="section cart">
+        <h2 class="section__title cart__title">
+          Корзина <span class="tag cart__count" id="cartCount">1</span>
+        </h2>
+        <ul class="grid" id="cartList">
+          <li class="product">
+            <img
+              src="images/oranges.jpg"
+              alt="Апельсини"
+              class="product__img"
+              width="168"
+              height="180"
+            />
+            <h4 class="product__title">Апельсини</h4>
+            <p class="product__price">
+              10.99<span class="product__price-tag"> ₴</span>
+            </p>
+            <div class="product__quantity-controls">
+              <button class="btn product__quantity-btn" type="button">-</button>
+              <span class="tag product__quantity">1</span>
+              <button class="btn product__quantity-btn" type="button">+</button>
+            </div>
+            <button class="btn" type="button">Видалити</button>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
