@@ -1,5 +1,6 @@
 const catalogList = document.querySelector('#productsList');
 const cartList = document.querySelector('#cartList');
+const cartCount = document.querySelector('#cartCount');
 
 const productsManager = {
   catalog: [],
@@ -60,6 +61,62 @@ const productsManager = {
 
     cartList.innerHTML = '';
     cartList.append(...orderedElements);
+
+    this.renderProductsQuantity();
+  },
+  handleDecrementClick(e) {
+    const id = e.target.dataset.id;
+    this.decrementQuantity(id);
+  },
+  decrementQuantity(id) {
+    for (const orderedProduct of this.orderedProducts) {
+      if (orderedProduct.id === id) {
+        if (orderedProduct.quantity > 1) {
+          orderedProduct.quantity--;
+        } else {
+          return;
+        }
+      }
+    }
+    this.renderOrderedProducts();
+  },
+  handleIncrementClick(e) {
+    const id = e.target.dataset.id;
+    this.incrementQuantity(id);
+  },
+  incrementQuantity(id) {
+    for (const orderedProduct of this.orderedProducts) {
+      if (orderedProduct.id === id) {
+        orderedProduct.quantity++;
+      }
+    }
+    this.renderOrderedProducts();
+  },
+  handleRemoveBtnClick(e) {
+    const id = e.target.dataset.id;
+    this.removeProduct(id);
+  },
+  removeProduct(id) {
+    for (const orderedProduct of this.orderedProducts) {
+      if (orderedProduct.id === id) {
+        const index = this.orderedProducts.indexOf(orderedProduct);
+        this.orderedProducts.splice(index, 1);
+        this.renderOrderedProducts();
+      }
+    }
+  },
+  countProductsQuantity() {
+    let totalQuantity = 0;
+
+    for (const orderedProduct of this.orderedProducts) {
+      totalQuantity += orderedProduct.quantity;
+    }
+
+    return totalQuantity;
+  },
+  renderProductsQuantity() {
+    const totalQuantity = this.countProductsQuantity();
+    cartCount.textContent = totalQuantity;
   },
   createProductElement(product) {
     const inputId = product.name + product.id;
@@ -157,7 +214,11 @@ const productsManager = {
     decrementBtn.className = 'btn product__quantity-btn';
     decrementBtn.type = 'button';
     decrementBtn.textContent = '-';
-    // TODO: Add onclick
+    decrementBtn.dataset.id = product.id;
+    decrementBtn.addEventListener(
+      'click',
+      this.handleDecrementClick.bind(this)
+    );
 
     const quantity = document.createElement('span');
     quantity.className = 'tag product__quantity';
@@ -167,7 +228,11 @@ const productsManager = {
     incrementBtn.className = 'btn product__quantity-btn';
     incrementBtn.type = 'button';
     incrementBtn.textContent = '+';
-    // TODO: Add onclick
+    incrementBtn.dataset.id = product.id;
+    incrementBtn.addEventListener(
+      'click',
+      this.handleIncrementClick.bind(this)
+    );
 
     quantityControls.append(decrementBtn, quantity, incrementBtn);
 
@@ -175,6 +240,8 @@ const productsManager = {
     deleteBtn.className = 'btn';
     deleteBtn.type = 'button';
     deleteBtn.textContent = 'Видалити';
+    deleteBtn.dataset.id = product.id;
+    deleteBtn.addEventListener('click', this.handleRemoveBtnClick.bind(this));
 
     productElem.append(image, title, price, quantityControls, deleteBtn);
 
