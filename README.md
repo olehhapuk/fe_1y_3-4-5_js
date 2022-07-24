@@ -31,3 +31,5 @@
 Погода - https://openweathermap.org/api
 
 Генератор палітри кольорів - http://colormind.io/api-access/
+
+База даних фільмів - https://developers.themoviedb.org/3/getting-started/introduction
