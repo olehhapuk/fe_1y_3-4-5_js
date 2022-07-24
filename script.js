@@ -42,6 +42,7 @@ const productsManager = {
       if (product.id === productToAdd.id) {
         product.quantity += quantity;
         this.updateProductQuantityElem(product.id, product.quantity);
+        this.renderProductsQuantity();
         return;
       }
     }
@@ -53,6 +54,7 @@ const productsManager = {
     this.orderedProducts.push(newProduct);
 
     this.addOrderedProductElem(newProduct);
+    this.renderProductsQuantity();
   },
   renderOrderedProducts() {
     const orderedElements = [];
@@ -71,7 +73,6 @@ const productsManager = {
     const productElem = this.createOrderElement(product);
     cartList.appendChild(productElem);
   },
-
   handleActionBtnClick(e) {
     switch (e.target.dataset.action) {
       case 'decrement':
@@ -100,8 +101,7 @@ const productsManager = {
         if (orderedProduct.quantity > 1) {
           orderedProduct.quantity--;
           this.updateProductQuantityElem(id, orderedProduct.quantity);
-        } else {
-          return;
+          this.renderProductsQuantity();
         }
       }
     }
@@ -115,6 +115,7 @@ const productsManager = {
       if (orderedProduct.id === id) {
         orderedProduct.quantity++;
         this.updateProductQuantityElem(id, orderedProduct.quantity);
+        this.renderProductsQuantity();
       }
     }
   },
@@ -122,13 +123,13 @@ const productsManager = {
     const id = e.target.dataset.id;
     this.removeProduct(id);
   },
-
   removeProduct(id) {
     for (const orderedProduct of this.orderedProducts) {
       if (orderedProduct.id === id) {
         const index = this.orderedProducts.indexOf(orderedProduct);
         this.orderedProducts.splice(index, 1);
         this.removeProductElem(id);
+        this.renderProductsQuantity();
       }
     }
   },
