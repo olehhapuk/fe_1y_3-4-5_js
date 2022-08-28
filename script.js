@@ -1,25 +1,20 @@
-axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+const obj = {
+  name: 'Vlad',
+  changeName() {
+    console.log(this.name);
+  },
+  // changeName: function() {
+  //   console.log(this.name);
+  // }
+};
 
-axios
-  .get('/posts', {
-    params: {
-      param: 'value',
-    },
-  })
-  .then((res) => console.log(res.data));
+// const func = obj.changeName;
+// func();
 
-axios
-  .post(
-    '/posts',
-    {
-      title: 'Test post 1',
-      userId: 1,
-      body: 'Lorem ipsum',
-    },
-    {
-      params: {
-        param: 'value',
-      },
-    }
-  )
-  .then((res) => console.log(res.data));
+obj.changeName();
+
+obj.getName = function () {
+  console.log(this.name);
+};
+
+obj.getName();

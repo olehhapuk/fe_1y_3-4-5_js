@@ -1,3 +1,0 @@
-- [Лоадери](https://projects.lukehaas.me/css-loaders/)
-- [Slick Slider](https://kenwheeler.github.io/slick/)
-- [Swiper Slider](https://swiperjs.com/)
