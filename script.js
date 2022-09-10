@@ -1,20 +1,46 @@
-const obj = {
-  name: 'Vlad',
-  changeName() {
-    console.log(this.name);
-  },
-  // changeName: function() {
-  //   console.log(this.name);
-  // }
-};
+class NotificationWidget {
+  constructor(togglerSelector, popupSelector) {
+    this.toggler = document.querySelector(togglerSelector);
+    this.popup = document.querySelector(popupSelector);
 
-// const func = obj.changeName;
-// func();
+    this.notifications = [];
 
-obj.changeName();
+    this.toggler.addEventListener('click', this.togglePopup.bind(this));
+  }
 
-obj.getName = function () {
-  console.log(this.name);
-};
+  togglePopup() {
+    this.popup.style.display =
+      this.popup.style.display === 'none' ? 'block' : 'none';
+  }
 
-obj.getName();
+  addNotification(name, title, createdAt) {
+    const html = `
+      <li class="notification">
+        <div class="avatar"></div>
+        <p class="text"><b>${name}</b> написав про <b>${title}</b></p>
+        <p class="time">${createdAt.toTimeString()}</p>
+      </li>`;
+
+    const newNotification = {
+      id: new Date().getTime(),
+      name,
+      title,
+      createdAt,
+    };
+
+    this.popup.innerHTML += html;
+    this.notifications.push(newNotification);
+  }
+
+  clearNotifications() {
+    this.notifications = [];
+    this.popup.innerHTML = '';
+  }
+}
+
+const notifications = new NotificationWidget(
+  '#notificationsToggler',
+  '#notificationsPopup'
+);
+
+notifications.addNotification('John Doe', 'NodeJS Perfomance', new Date());
