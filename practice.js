@@ -31,9 +31,11 @@ class Hero {
     }
   }
 
-  takeDamage(amount, from) {
-    this.#hp -= amount;
-    console.log(`${from.name} атакує ${this.name} і наносить ${amount} шкоди`);
+  takeDamage(weapon, from) {
+    this.#hp -= weapon.damage;
+    console.log(
+      `${from.name} атакує ${this.name} за допомогою ${weapon.name} і наносить ${weapon.damage} шкоди`
+    );
     console.log(`У ${this.name} залишилось ${this.#hp} HP`);
   }
 
@@ -62,35 +64,80 @@ class Hero {
 }
 
 class Warrior extends Hero {
-  constructor(name, xp, hp, baseLvl, damage) {
+  constructor(name, xp, hp, baseLvl, weapon) {
     super(name, xp, hp, baseLvl);
-    this.damage = damage;
+
+    if (weapon instanceof Weapon) {
+      this.weapon = weapon;
+    } else {
+      console.error('Такий тип не підтримується');
+    }
   }
 
   attack(hero) {
-    hero.takeDamage(this.damage, this);
+    hero.takeDamage(this.weapon, this);
   }
 }
 
 class Mage extends Hero {
   constructor(name, xp, hp, baseLvl, spell) {
     super(name, xp, hp, baseLvl);
-    this.spell = spell;
+
+    if (spell instanceof Spell) {
+      this.spell = spell;
+    } else {
+      console.error('Такий тип не підтримується');
+    }
   }
 
   castSpell(hero) {
-    hero.takeDamage(this.spell.damage, this);
+    hero.takeDamage(this.spell, this);
   }
 }
 
-const vsevolod = new Warrior('Vsevolod', 500, 20, 0, 7);
+class DamageDealer {
+  constructor(name, damage) {
+    this.name = name;
+    this.damage = damage;
+  }
+}
+
+class Weapon extends DamageDealer {
+  static allowedTypes = ['sword', 'spear', 'bow'];
+
+  constructor(name, damage, type) {
+    super(name, damage);
+
+    if (Weapon.allowedTypes.includes(type)) {
+      this.type = type;
+    } else {
+      console.error(`Тип ${type} не існує`);
+    }
+  }
+}
+
+class Spell extends DamageDealer {
+  static allowedElements = ['water', 'fire', 'wind', 'earth'];
+
+  constructor(name, damage, element) {
+    super(name, damage);
+
+    if (Spell.allowedElements.includes(element)) {
+      this.element = element;
+    } else {
+      console.error(`Елемент ${element} не існує`);
+    }
+  }
+}
+
+const katana = new Weapon('Katana', 12, 'sword');
+const fireball = new Spell('Fireball', 16, 'fire');
+
+const vsevolod = new Warrior('Vsevolod', 500, 20, 0, katana);
 vsevolod.gainXP(500);
 vsevolod.move(-5, 5);
 
-const vlad = new Mage('Vlad', 700, 15, 2, {
-  damage: 12,
-  name: 'Nightmare',
-});
+const vlad = new Mage('Vlad', 700, 15, 2, fireball);
 
 vsevolod.attack(vlad);
 vlad.castSpell(vsevolod);
