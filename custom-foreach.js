@@ -49,6 +49,6 @@ Array.prototype.customForEach = function (callback) {
   }
 };
 
-players.customForEach((player, i) => {
+players.customForEach((player) => {
   console.log(player);
 });
