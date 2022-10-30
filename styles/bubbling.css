@@ -1,0 +1,20 @@
+.box-1,
+.box-2,
+.box-3 {
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 24px;
+  font-family: sans-serif;
+}
+
+.box-1 {
+  background-color: aquamarine;
+}
+
+.box-2 {
+  background-color: burlywood;
+}
+
+.box-3 {
+  background-color: cornflowerblue;
+}
