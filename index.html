@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basics</title>
+    <style>
+      body {
+        background-color: #3b3b3b;
+      }
+
+      .box {
+        height: 350px;
+        width: 350px;
+        margin-bottom: 100vh;
+      }
+
+      .box-1 {
+        background-color: palevioletred;
+      }
+
+      .box-2 {
+        background-color: palegreen;
+      }
+
+      .box-3 {
+        background-color: paleturquoise;
+      }
+
+      [data-animation='fade'] {
+        opacity: 0;
+        transition: opacity 500ms linear;
+      }
+
+      .fade {
+        opacity: 1;
+      }
+
+      [data-animation='scale'] {
+        transform: scale(0.5);
+        transition: transform 500ms linear;
+      }
+
+      .scale {
+        transform: scale(1);
+      }
+
+      [data-animation='slide-right'] {
+        transform: translateX(-300px);
+        transition: transform 500ms linear;
+      }
+
+      .slide-right {
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box-1" data-animation="slide-right"></div>
+    <div class="box box-2" data-animation="fade"></div>
+    <div class="box box-3" data-animation="scale"></div>
+
+    <!-- <script src="scripts/index.js"></script> -->
+    <script src="scripts/anim.js"></script>
+  </body>
+</html>
