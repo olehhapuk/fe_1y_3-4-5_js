@@ -11,7 +11,15 @@ function renderNews(searchResults) {
   newsListElem.innerHTML = resultsHtml;
 }
 
-const handleSearchInput = _.debounce((e) => {
+function debounce(callback, timeout) {
+  let timerId;
+  return (...args) => {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => callback(...args), timeout);
+  };
+}
+
+const handleSearchInput = debounce((e) => {
   const searchQuery = e.target.value;
   loadNews(searchQuery, renderNews);
 }, 750);
