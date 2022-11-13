@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabs</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 50px;
+      }
+
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+
+      .nav {
+        height: 50px;
+        background-color: #e6e6e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 18px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .nav-link {
+        color: #6c6c6c;
+        text-decoration: none;
+      }
+
+      .nav-link-active {
+        color: #000;
+      }
+
+      main {
+        padding-top: 50px;
+      }
+
+      section {
+        height: calc(100vh - 50px);
+        background-color: #d7d7d7;
+        margin-bottom: 20px;
+        padding: 50px;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      footer {
+        height: 150px;
+        background-color: #e6e6e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <a href="#home" class="nav-link nav-link-active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contactUs" class="nav-link">Contact Us</a>
+    </nav>
+
+    <main>
+      <section id="home">
+        <h1>Home</h1>
+      </section>
+      <section id="about">
+        <h1>About</h1>
+      </section>
+      <section id="contactUs">
+        <h1>Contacts Us</h1>
+      </section>
+    </main>
+
+    <footer>Footer content</footer>
+
+    <!-- <script src="scripts/tabs.js"></script> -->
+    <script src="scripts/client-rect-tabs.js"></script>
+  </body>
+</html>
