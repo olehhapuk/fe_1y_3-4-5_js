@@ -46,23 +46,37 @@ gallery.addEventListener('click', (e) => {
   if (e.target.classList.contains('gallery__image')) {
     const originalUrl = e.target.dataset.source;
     const description = e.target.alt;
-    openModal(originalUrl, description);
+    const index = Number(e.target.dataset.index);
+    openModal(originalUrl, description, index);
   }
 });
 
 function prev() {
-  console.log('prev');
+  if (activeIndex === 0) {
+    return;
+  }
+
+  const targetIndex = activeIndex - 1;
+  const targetImage = images[targetIndex];
+  openModal(targetImage.original, targetImage.description, targetIndex);
 }
 
 function next() {
-  console.log('next');
+  if (activeIndex === images.length - 1) {
+    return;
+  }
+
+  const targetIndex = activeIndex + 1;
+  const targetImage = images[targetIndex];
+  openModal(targetImage.original, targetImage.description, targetIndex);
 }
 
-function openModal(originalUrl, description) {
+function openModal(originalUrl, description, index) {
   modal.classList.add('is-open');
   modalImage.src = originalUrl;
   modalImage.alt = description;
   isModalOpen = true;
+  activeIndex = index;
 }
 
 function closeModal() {
@@ -72,7 +86,7 @@ function closeModal() {
   isModalOpen = false;
 }
 
-function createGalleryElem(preview, original, description) {
+function createGalleryElem(preview, original, description, index) {
   const finalHtml = `
   <li class="gallery__item">
     <a
@@ -84,6 +98,7 @@ function createGalleryElem(preview, original, description) {
         src="${preview}"
         data-source="${original}"
         alt="${description}"
+        data-index="${index}"
       />
     </a>
   </li>
@@ -94,11 +109,12 @@ function createGalleryElem(preview, original, description) {
 
 function renderImages() {
   let finalImages = '';
-  images.forEach((image) => {
+  images.forEach((image, i) => {
     const imageHtml = createGalleryElem(
       image.preview,
       image.original,
-      image.description
+      image.description,
+      i
     );
 
     finalImages += imageHtml;
