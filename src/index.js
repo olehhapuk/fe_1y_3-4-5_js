@@ -1,1 +1,1 @@
-console.log('Webpack test');
+import './styles/index.scss';
