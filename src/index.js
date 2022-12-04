@@ -1,20 +1,14 @@
 import './styles/index.scss';
 import cardTemplate from './partials/card.hbs';
+import menu from './data/menu.json';
+
+console.log(menu);
 
 const rootElem = document.querySelector('#root');
 
-const cardHtml = cardTemplate({
-  text: 'People list',
-  people: [
-    {
-      firstName: 'John',
-      lastName: 'Doe',
-    },
-    {
-      firstName: 'Jane',
-      lastName: 'Doe',
-    },
-  ],
-});
+let menuHtml = '';
+for (const menuItem of menu) {
+  menuHtml += cardTemplate(menuItem);
+}
 
-rootElem.innerHTML = cardHtml;
+rootElem.innerHTML = menuHtml;
