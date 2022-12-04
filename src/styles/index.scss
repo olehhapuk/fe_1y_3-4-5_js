@@ -14,4 +14,14 @@ body {
     font-family: sans-serif;
     font-size: 18px;
   }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__item {
+    color: #181818;
+    font-size: 16px;
+  }
 }

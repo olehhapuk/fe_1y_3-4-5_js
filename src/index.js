@@ -4,7 +4,17 @@ import cardTemplate from './partials/card.hbs';
 const rootElem = document.querySelector('#root');
 
 const cardHtml = cardTemplate({
-  content: 'Card content 1',
+  text: 'People list',
+  people: [
+    {
+      firstName: 'John',
+      lastName: 'Doe',
+    },
+    {
+      firstName: 'Jane',
+      lastName: 'Doe',
+    },
+  ],
 });
 
 rootElem.innerHTML = cardHtml;
