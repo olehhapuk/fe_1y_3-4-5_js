@@ -1,13 +1,14 @@
 {
   "scripts": {
-    "build": "webpack",
-    "start": "webpack server --open"
+    "build": "cross-env NODE_ENV=production webpack",
+    "start": "cross-env NODE_ENV=development webpack server --open"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.0",
     "copy-webpack-plugin": "^11.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.2",
     "handlebars-loader": "^1.7.2",
     "html-webpack-plugin": "^5.5.0",

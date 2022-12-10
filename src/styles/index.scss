@@ -3,25 +3,5 @@ body {
   color: #fff;
 }
 
-.card {
-  display: inline-block;
-  background-color: #dcdcdc;
-  border-radius: 8px;
-  padding: 20px;
-
-  &__text {
-    color: #000;
-    font-family: sans-serif;
-    font-size: 18px;
-  }
-
-  &__list {
-    list-style: none;
-    padding: 0;
-  }
-
-  &__item {
-    color: #181818;
-    font-size: 16px;
-  }
-}
+@import './movie-list.scss';
+@import './movie.scss';
