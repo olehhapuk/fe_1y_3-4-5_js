@@ -5,3 +5,8 @@ import { renderInHbs } from './scripts/renderInHbs';
 
 // renderMap(movies);
 renderInHbs(movies);
+
+const theme = localStorage.getItem('theme');
+console.log(theme);
+
+localStorage.setItem('theme', 'light');
