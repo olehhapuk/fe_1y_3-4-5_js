@@ -3,11 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const cssImportLoader =
+  process.env.NODE_ENV === 'production'
+    ? MiniCssExtractPlugin.loader
+    : 'style-loader';
+
 module.exports = {
   mode: 'development',
   entry: {
     index: './src/index.js',
-    about: './src/about.js',
   },
   output: {
     filename: '[name].bundle.js',
@@ -31,11 +35,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [cssImportLoader, 'css-loader'],
       },
       {
         test: /\.(scss|sass)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [cssImportLoader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpg|jpeg|svg|txt)$/,
@@ -61,11 +65,6 @@ module.exports = {
       template: './src/index.hbs',
       chunks: ['index'],
       filename: 'index.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/about.hbs',
-      chunks: ['about'],
-      filename: 'about.html',
     }),
   ],
 };
