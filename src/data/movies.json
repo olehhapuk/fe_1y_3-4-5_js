@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "title": "Spirited",
+    "genres": ["Comedy", "Family", "Musical"],
+    "summary": "A musical version of Charles Dickens's story of a miserly misanthrope who is taken on a magical journey.",
+    "posterUrl": "https://m.media-amazon.com/images/M/MV5BYzQxMzg3MTEtYjUwNi00YzZhLThlMzItZDkwNDdmOTU1OGY4XkEyXkFqcGdeQXVyMTE5MTg5NDIw._V1_QL75_UX190_CR0,2,190,281_.jpg"
+  },
+  {
+    "id": "2",
+    "title": "The Guardians of the Galaxy Holiday Special",
+    "genres": ["Action", "Adventure", "Comedy"],
+    "summary": "Star-Lord, Drax, Rocket, Mantis, and Groot engage in some spirited shenanigans in an all-new original special created for Disney+.",
+    "posterUrl": "https://m.media-amazon.com/images/M/MV5BZDA4ZjdhZDgtMmM5Zi00YjdhLTllYWUtZTBkMGYzYmVmNjE4XkEyXkFqcGdeQXVyMTE5MTg5NDIw._V1_QL75_UX190_CR0,2,190,281_.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Black Panther: Wakanda Forever",
+    "genres": ["Action", "Adventure", "Drama"],
+    "summary": "The people of Wakanda fight to protect their home from intervening world powers as they mourn the death of King T'Challa.",
+    "posterUrl": "https://m.media-amazon.com/images/M/MV5BYjAwOTVlNzItYTZiYi00OTgzLWJkZjQtYzU3YjZlNDIxZDYxXkEyXkFqcGdeQXVyMTE5MTg5NDIw._V1_QL75_UX190_CR0,2,190,281_.jpg"
+  },
+  {
+    "id": "4",
+    "title": "Guillermo del Toro's Pinocchio",
+    "genres": ["Animation", "Drama", "Family"],
+    "summary": "A father's wish magically brings a wooden boy to life in Italy, giving him a chance to care for the child.",
+    "posterUrl": "https://m.media-amazon.com/images/M/MV5BZmJhODExYmMtZTExNy00MzY0LTliM2ItNWMwNDVjYjM1MTNmXkEyXkFqcGdeQXVyMTE5MTg5NDIw._V1_QL75_UX190_CR0,2,190,281_.jpg"
+  }
+]
