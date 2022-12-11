@@ -1,7 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+html.dark {
+  --color-background: #1c1c1c;
+  --color-text: #fff;
+  --color-movie-bg: #363636;
+  --color-genre-bg: #a0a0a0;
+  --color-genre-text: #000;
+}
+
+html.light {
+  --color-background: #e2e2e2;
+  --color-text: #000;
+  --color-movie-bg: #ffffff;
+  --color-genre-bg: #5a5a5a;
+  --color-genre-text: #fff;
+}
+
 body {
-  background-color: #1c1c1c;
-  color: #fff;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: sans-serif;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 @import './movie-list.scss';
 @import './movie.scss';
+@import './theme-switcher.scss';

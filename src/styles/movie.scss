@@ -1,5 +1,8 @@
 .movie {
-  width: 200px;
+  width: 250px;
+  background-color: var(--color-movie-bg);
+  padding: 18px;
+  border-radius: 8px;
 
   &__poster {
     width: 100%;
@@ -8,5 +11,16 @@
   &__genres {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__genre {
+    background-color: var(--color-genre-bg);
+    color: var(--color-genre-text);
+    font-size: 12px;
+    padding: 4px 6px;
+    border-radius: 6px;
   }
 }

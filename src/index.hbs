@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     {{> partials/meta title="Movies" }}
   </head>
   <body>
+    <div class="theme-switcher">
+      <input type="checkbox" class="theme-switcher__input visually-hidden" id="themeSwitcherInput">
+      <label for="themeSwitcherInput" class="theme-switcher__label"></label>
+    </div>
+
     <div id="root"></div>
   </body>
 </html>
