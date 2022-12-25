@@ -1,35 +1,58 @@
 import './styles/index.scss';
-import { logCallback, logPromise } from './scripts/delayedLog';
-import { makePromise } from './scripts/promiseAll';
 
-// logCallback(
-//   () => {
-//     console.log('Log callback success');
-//   },
-//   () => {
-//     console.log('Log callback error');
+import {
+  fetchLanguage,
+  fetchLanguageCallback,
+  fetchLanguagePromise,
+} from './scripts/fetchLanguages';
+
+// const language = fetchLanguage('Ruby');
+// if (language) {
+//   const person = {
+//     name: 'John',
+//     programmingLanguage: language.name,
+//   };
+
+//   console.log(`${person.name} coding with ${person.programmingLanguage}`);
+// } else {
+//   console.error('Ruby not found');
+// }
+
+// fetchLanguageCallback('Swift', (language) => {
+//   if (language instanceof Error) {
+//     console.error(language);
+//   } else {
+//     console.log(`John coding with ${language.name}`);
 //   }
-// );
+// });
 
-// console.log('Loading start');
+const loaderElem = document.querySelector('.loader');
+const resultElem = document.querySelector('.result');
+const errorElem = document.querySelector('.error');
+const formElem = document.querySelector('.form');
 
-// logPromise()
-//   .then((data) => {
-//     console.log('Log promise success:', data);
-//   })
-//   .catch((error) => {
-//     console.log('Promise error:', error);
-//   })
-//   .finally(() => console.log('Loading end'));
+formElem.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-// fetch('url')
-//   .then((res) => res.text())
-//   .then((data) => console.log(data));
-
-const promise1 = makePromise('Promise 1');
-const promise2 = makePromise('Promise 2');
-
-Promise.all([promise1, promise2]).then(([promise1Data, promise2Data]) => {
-  console.log('Promise 1 data:', promise1Data);
-  console.log('Promise 2 data:', promise2Data);
+  const query = e.target.elements.query.value;
+  searchLanguage(query);
 });
+
+function searchLanguage(query) {
+  loaderElem.style.display = 'block';
+  resultElem.style.display = 'none';
+  errorElem.style.display = 'none';
+
+  fetchLanguagePromise(query)
+    .then((language) => {
+      resultElem.textContent = `John coding with ${language.name}`;
+      resultElem.style.display = 'block';
+    })
+    .catch((error) => {
+      errorElem.textContent = error;
+      errorElem.style.display = 'block';
+    })
+    .finally(() => {
+      loaderElem.style.display = 'none';
+    });
+}
