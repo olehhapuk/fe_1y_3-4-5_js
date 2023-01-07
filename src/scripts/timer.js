@@ -1,28 +1,73 @@
-const refs = {
-  startBtn: document.querySelector('#startBtn'),
-  stopBtn: document.querySelector('#stopBtn'),
-  output: document.querySelector('#output'),
-};
+export class Timer {
+  static ActionType = {
+    Pause: 'pause',
+    Resume: 'resume',
+  };
 
-refs.startBtn.addEventListener('click', start);
-refs.stopBtn.addEventListener('click', stop);
+  constructor(
+    startBtnSelector,
+    stopBtnSelector,
+    pauseBtnSelector,
+    outputSelector
+  ) {
+    this.startBtn = document.querySelector(startBtnSelector);
+    this.stopBtn = document.querySelector(stopBtnSelector);
+    this.pauseBtn = document.querySelector(pauseBtnSelector);
+    this.outputElem = document.querySelector(outputSelector);
 
-let startingTime;
-let intervalId;
+    this.startBtn.addEventListener('click', this.start.bind(this));
+    this.stopBtn.addEventListener('click', this.stop.bind(this));
+    this.pauseBtn.addEventListener('click', this.togglePause.bind(this));
 
-function lag() {
-  setTimeout(() => {
-    for (let i = 0; i < 200_000; i++) {
-      console.log(i);
+    this.startingTime = null;
+    this.intervalId = null;
+    this.pauseTime = null;
+  }
+
+  togglePause(e) {
+    // actionType === Timer.ActionType.Pause && this.pause(); // Run this.pause if actionType is 'pause'
+
+    const actionType = e.target.dataset.action;
+    if (actionType === Timer.ActionType.Pause) {
+      this.pause();
+    } else {
+      this.resume();
     }
-  }, 5000);
-}
+  }
 
-function start() {
-  startingTime = Date.now();
+  pause() {
+    clearInterval(this.intervalId);
+    this.pauseTime = Date.now();
 
-  intervalId = setInterval(() => {
-    const elapsedTime = Date.now() - startingTime;
+    // Change puse button state
+    this.pauseBtn.dataset.action = Timer.ActionType.Resume;
+    this.pauseBtn.textContent = 'Продовжити';
+  }
+
+  resume() {
+    const elapsedPauseTime = Date.now() - this.pauseTime;
+    this.startingTime += elapsedPauseTime;
+
+    this.update();
+    this.intervalId = setInterval(this.update.bind(this), 1000);
+
+    // Change puse button state
+    this.pauseBtn.dataset.action = Timer.ActionType.Pause;
+    this.pauseBtn.textContent = 'Пауза';
+  }
+
+  start() {
+    this.startingTime = Date.now();
+    this.update();
+    this.intervalId = setInterval(this.update.bind(this), 1000);
+
+    this.startBtn.disabled = true;
+    this.stopBtn.disabled = false;
+    this.pauseBtn.disabled = false;
+  }
+
+  update() {
+    const elapsedTime = Date.now() - this.startingTime;
 
     const seconds = Math.floor(elapsedTime / 1000) % 60;
     const minutes = Math.floor(elapsedTime / 1000 / 60) % 60;
@@ -40,13 +85,18 @@ function start() {
       minimumIntegerDigits: 2,
     });
 
-    refs.output.innerHTML = `${hoursStr}:${minutesStr}:${secondsStr}`;
-  }, 1000);
+    this.outputElem.innerHTML = `${hoursStr}:${minutesStr}:${secondsStr}`;
+  }
 
-  // Симуляємо зависання
-  // lag();
-}
+  stop() {
+    clearInterval(this.intervalId);
 
-function stop() {
-  clearInterval(intervalId);
+    this.startBtn.disabled = false;
+    this.stopBtn.disabled = true;
+    this.pauseBtn.disabled = true;
+
+    // Change puse button state
+    this.pauseBtn.dataset.action = Timer.ActionType.Pause;
+    this.pauseBtn.textContent = 'Пауза';
+  }
 }

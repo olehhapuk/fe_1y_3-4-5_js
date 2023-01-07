@@ -31,3 +31,7 @@ body {
   border-radius: 6px;
   font-weight: 700;
 }
+
+button:disabled {
+  cursor: not-allowed;
+}
