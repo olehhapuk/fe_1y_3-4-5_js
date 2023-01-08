@@ -6,4 +6,10 @@ import './styles/index.scss';
 // import './scripts/timer';
 import { Timer } from './scripts/timer';
 
-const timer = new Timer('#startBtn', '#stopBtn', '#pauseBtn', '#output');
+const timer = new Timer(
+  '#startBtn',
+  '#stopBtn',
+  '#pauseBtn',
+  '#output',
+  '#notificationTime'
+);
