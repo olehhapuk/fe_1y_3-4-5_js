@@ -1,2 +1,4 @@
 import './styles/index.scss';
-import './scripts/task-03';
+
+const str = JSON.stringify({ id: 1 });
+console.log(JSON.parse(str));
