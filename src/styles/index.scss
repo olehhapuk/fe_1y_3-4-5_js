@@ -45,3 +45,19 @@ body {
   border-radius: 12px;
   padding: 0 20px;
 }
+
+.btn {
+  border: none;
+  background-color: #747bff;
+  display: block;
+  margin: 12px auto;
+  border-radius: 12px;
+  padding: 12px 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  background-color: #989cdf;
+  cursor: default;
+}
