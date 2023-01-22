@@ -43,7 +43,7 @@ ul {
 }
 
 .posts-list {
-  padding: 0 64px;
+  padding: 20px 64px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 16px;
@@ -137,14 +137,6 @@ ul {
   animation: skeleton 0.75s ease-in-out infinite alternate;
 }
 
-.modal-title.skeleton-loading {
-  height: 32px;
-}
-
-.modal-body.skeleton-loading {
-  height: 64px;
-}
-
 @keyframes skeleton {
   from {
     opacity: 1;
@@ -154,12 +146,24 @@ ul {
   }
 }
 
+.modal-title.skeleton-loading {
+  height: 32px;
+}
+
+.modal-body.skeleton-loading {
+  height: 64px;
+}
+
+.comment-placeholder.skeleton-loading {
+  height: 120px;
+}
+
 .comments-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin: 0;
-  max-height: 600px;
+  max-height: 60vh;
   overflow-y: auto;
   padding-right: 12px;
 }

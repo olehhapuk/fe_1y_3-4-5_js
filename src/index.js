@@ -1,10 +1,16 @@
 import './styles/index.scss';
 import postTemplate from './partials/post.hbs';
+import commentTemplate from './partials/comment.hbs';
 
 const refs = {
   postsList: document.querySelector('.posts-list'),
   postsLoader: document.querySelector('#postsLoader'),
   loadMoreBtn: document.querySelector('#loadMoreBtn'),
+  modal: document.querySelector('#postModal'),
+  modalTitle: document.querySelector('.modal-title'),
+  modalBody: document.querySelector('.modal-body'),
+  modalCommentsList: document.querySelector('.comments-list'),
+  modalBackdrop: document.querySelector('.modal-backdrop'),
 };
 
 const apiUrl = 'https://jsonplaceholder.typicode.com';
@@ -14,6 +20,8 @@ let postsLoading = false;
 let totalPostsPages = 0;
 
 refs.loadMoreBtn.addEventListener('click', fetchPosts);
+refs.postsList.addEventListener('click', handlePostsListClick);
+refs.modalBackdrop.addEventListener('click', handleBackdropClick);
 
 const observer = new IntersectionObserver((entries) => {
   const btnInfo = entries[0];
@@ -25,6 +33,70 @@ const observer = new IntersectionObserver((entries) => {
 observer.observe(refs.loadMoreBtn);
 
 fetchPosts();
+
+function handleBackdropClick(e) {
+  if (e.target === e.currentTarget) {
+    closeModal();
+  }
+}
+
+function openModal() {
+  refs.modal.hidden = false;
+}
+
+function closeModal() {
+  refs.modal.hidden = true;
+  refs.modalTitle.textContent = '';
+  refs.modalBody.textContent = '';
+  refs.modalCommentsList.innerHTML = `
+  <div class="comment-placeholder skeleton-loading"></div>
+  <div class="comment-placeholder skeleton-loading"></div>
+  <div class="comment-placeholder skeleton-loading"></div>`;
+}
+
+function handlePostsListClick(e) {
+  if (!e.target.dataset.postid) {
+    return;
+  }
+
+  const postId = parseInt(e.target.dataset.postid);
+  openModal();
+
+  refs.modalTitle.classList.add('skeleton-loading');
+  refs.modalBody.classList.add('skeleton-loading');
+  Promise.all([fetchPostData(postId), fetchPostComments(postId)])
+    .then(([postData, postComments]) => {
+      refs.modalTitle.textContent = postData.title;
+      refs.modalBody.textContent = postData.body;
+
+      renderComments(postComments);
+    })
+    .finally(() => {
+      refs.modalTitle.classList.remove('skeleton-loading');
+      refs.modalBody.classList.remove('skeleton-loading');
+    });
+}
+
+function renderComments(commentsData) {
+  let commentsHtml = '';
+  commentsData.forEach((comment) => {
+    commentsHtml += commentTemplate({
+      email: comment.email,
+      body: comment.body,
+    });
+  });
+  refs.modalCommentsList.innerHTML = commentsHtml;
+}
+
+function fetchPostData(postId) {
+  return fetch(`${apiUrl}/posts/${postId}`).then((data) => data.json());
+}
+
+function fetchPostComments(postId) {
+  return fetch(`${apiUrl}/posts/${postId}/comments`).then((data) =>
+    data.json()
+  );
+}
 
 function setPostsLoading(value) {
   if (value === true) {
@@ -82,10 +154,7 @@ function fetchPosts() {
 function renderPosts(postsData) {
   let postsHtml = '';
   postsData.forEach((post) => {
-    const postHtml = postTemplate({
-      title: post.title,
-      body: post.body,
-    });
+    const postHtml = postTemplate(post);
     postsHtml += postHtml;
   });
 

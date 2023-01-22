@@ -8,18 +8,17 @@
     <span class="loader" id="postsLoader" style="display: none;"></span>
     <button class="btn" id="loadMoreBtn">Load More</button>
 
-    <div class="modal" id="postModal">
-      <div class="nodal-backdrop">
+    <div class="modal" id="postModal" hidden>
+      <div class="modal-backdrop">
         <div class="modal-content">
-          <h2 class="modal-title">Post 1</h2>
-          <p class="modal-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, officiis iusto consectetur deserunt soluta ut atque exercitationem sunt deleniti illo libero minus, illum fugiat sapiente rerum tempore nisi repellat officia?</p>
+          <h2 class="modal-title skeleton-loading"></h2>
+          <p class="modal-body skeleton-loading"></p>
 
-          <h3 class="modal-subtitle"></h3>
+          <h3 class="modal-subtitle">Comments</h3>
           <div class="comments-list">
-            <div class="comment">
-              <h4 class="comment-email">test@mail.com</h4>
-              <p class="comment-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt ducimus dolor ut! Aut illo dignissimos at tempora sint tenetur expedita voluptas neque quis! Accusamus perspiciatis et eaque assumenda dicta sed!</p>
-            </div>
+            <div class="comment-placeholder skeleton-loading"></div>
+            <div class="comment-placeholder skeleton-loading"></div>
+            <div class="comment-placeholder skeleton-loading"></div>
           </div>
         </div>
       </div>
