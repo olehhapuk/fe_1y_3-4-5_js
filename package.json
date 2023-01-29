@@ -2,7 +2,8 @@
   "name": "todos",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "start": "cross-env NODE_ENV=development webpack server --open"
+    "start": "cross-env NODE_ENV=development webpack server --open",
+    "serve:api": "json-server src/db.json"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
