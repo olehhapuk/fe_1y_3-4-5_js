@@ -1,7 +1,11 @@
-import './styles/index.scss';
-import { CountdownTimer } from './CountdownTimer';
+import { debounce } from 'lodash';
+import { error, alert, notice, success, info } from '@pnotify/core';
 
-new CountdownTimer({
-  selector: '#timer-1',
-  targetDate: new Date('02-04-2023 14:30'),
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+
+import './styles/index.scss';
+
+notice({
+  text: 'Test notice message',
 });
