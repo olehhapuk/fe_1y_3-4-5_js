@@ -2,17 +2,30 @@
 <html lang="uk">
 
 <head>
-  {{>partials/meta title="Todos"}}
+  {{>partials/meta title="Countdown"}}
 </head>
 
 <body>
-  <div class="container">
-    <form class="todo-editor">
-      <textarea name="text" placeholder="Enter todo text" class="form-field" required></textarea>
-      <button class="btn" type="submit">Create</button>
-    </form>
+  <div class="timer" id="timer-1">
+    <div class="field">
+      <span class="value" data-value="days">11</span>
+      <span class="label">Days</span>
+    </div>
 
-    <div class="todo-list"></div>
+    <div class="field">
+      <span class="value" data-value="hours">11</span>
+      <span class="label">Hours</span>
+    </div>
+
+    <div class="field">
+      <span class="value" data-value="mins">11</span>
+      <span class="label">Minutes</span>
+    </div>
+
+    <div class="field">
+      <span class="value" data-value="secs">11</span>
+      <span class="label">Seconds</span>
+    </div>
   </div>
 </body>
 
